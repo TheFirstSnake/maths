@@ -13,15 +13,7 @@ int print(Complex A){
     char result[50] = "";
     if (A.complex<0)
         x = "";
-    char compA[24] = ""; char compB[24] = "";
-    snprintf(compA, sizeof(compA), "%d", A.real);
-    snprintf(compB, sizeof(compB), "%d", A.complex);
-    strcpy(result, "");
-    strcat(result, compA);
-    strcat(result, x);
-    strcat(result, compB);
-    strcat(result, "i");
-    printf("%s\n",result);
+    printf("%d%s%di\n",A.real,x,A.complex);
     return 0;
 }
 
@@ -51,9 +43,9 @@ Complex extract(char input[]){
 int addition(){
     printf("For addition of complex numbers.\n");
     printf("Each argument must be entered in the format 'a' or 'bi' where a and b are integers.\n Enter end to stop putting arguments\n");
-    Complex compo; Complex output; char input[50] = "Empty";
+    Complex compo; Complex output = {0}; char input[50] = "Empty";
     while(true){
-        scanf("%49s",input);
+        fgets(input, sizeof(input), stdin);
         if (strcmp(input, "end") != 0){
             compo = extract(input);
             output.real = output.real + compo.real;
