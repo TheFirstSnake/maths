@@ -8,18 +8,12 @@
 typedef struct {
     int rows;
     int cols;
-    int matrix [MAX][MAX];
-}Matrices;
+    int *data;
+} Matrices;
 
 Matrices multiplication(Matrices compA, Matrices compB) {
-    Matrices result = {0}; result.rows = compA.rows; result.cols = compB.cols;
-    for (int i = 0; i<compA.rows; i++) {
-        for (int j = 0; j<compB.cols; j++) {
-           for (int k = 0; k<compA.cols; k++){
-               result.matrix[i][j] = result.matrix[i][j] + ( compA.matrix[i][k] * compB.matrix[k][j] );
-            }
-        }
-    }
+    Matrices result = {0}; result.rows = compA.cols; result.cols = compB.rows;
+    index = ;
     return result;
 }
 

@@ -27,6 +27,14 @@ Complex extract(char input[]){
         values.real = a; values.complex = 0-b;
     }else if (sscanf(input, "%d-%di%n", &a, &b, &consumed) == 2 && input[consumed] == '\0'){
         values.real = a; values.complex = 0-b;
+    }else if (sscanf(input, "%di+%d%n", &b, &a, &consumed) == 2 && input[consumed] == '\0'){
+        values.real = a; values.complex = b;
+    }else if (sscanf(input, "i%d+%d%n", &b, &a, &consumed) == 2 && input[consumed] == '\0'){
+        values.real = a; values.complex = b;
+    }else if (sscanf(input, "i%d-%d%n", &b, &a, &consumed) == 2 && input[consumed] == '\0'){
+        values.real = 0-a; values.complex = b;
+    }else if (sscanf(input, "%di-%d%n", &b, &a, &consumed) == 2 && input[consumed] == '\0'){
+        values.real = 0-a; values.complex = b;
     }else if (sscanf(input, "%di%n", &b, &consumed) == 1 && input[consumed] == '\0'){
         values.real = a; values.complex = b;
     }else if (sscanf(input, "i%d%n", &b, &consumed) == 1 && input[consumed] == '\0'){
@@ -87,5 +95,9 @@ int multiplication(){
 }
 
 int main(){
+    printf("Enter your choice between multiplication and addition\n");
+    printf("1. For Addition. \n2. For Multiplication");
+    char choice[5];
+    fgets(choice, sizeof(choice), stdin);
     multiplication();
 }
